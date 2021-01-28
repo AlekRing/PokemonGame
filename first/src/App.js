@@ -1,24 +1,23 @@
-import logo from './logo.svg';
+import Header from './components/header/header';
+import Layout from './components/layout/layout';
+import Footer from './components/footer/footer';
+
 import './App.css';
 
-function App() {
+import urlBg from './assets/bg2.jpg';
+import urlBg2 from './assets/bg3.jpg';
+
+
+const App = () => {
+  const bgColor = 'gray'
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-            Hello there!
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Header title="Hello there!" descr="so good" />
+      <Layout urlBg={urlBg} title="Come to the Dark Side" id="myId" desc="we have cookies"/>
+      <Layout bgColor={bgColor} title="Come to the Dark Side" id="myId" desc="we have cookies"/>
+      <Layout urlBg2={urlBg2} title="Come to the Dark Side" id="myId" desc="we have cookies"/>
+      <Footer />
+    </>
   );
 }
 
