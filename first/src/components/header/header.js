@@ -1,6 +1,12 @@
+import cn from 'classnames';
+
 import s from './header.module.css';
 
-const Header = ({ title, descr }) => {
+const Header = ({ title, descr, onClickButton }) => {
+    const handleClick = () => {
+        onClickButton && onClickButton('game');
+    }
+
     return (
         <>
             <header className={s.root}>
@@ -8,6 +14,9 @@ const Header = ({ title, descr }) => {
                 <div className={s.container}>
                     <h1>{title}</h1>
                     <p>{descr}</p>
+                    <button className={cn("link_button")} onClick={handleClick}>
+                        Start Game!
+                    </button>
                 </div>
             </header>
         </>
