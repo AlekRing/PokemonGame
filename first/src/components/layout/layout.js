@@ -2,7 +2,7 @@ import s from "./layout.module.css";
 
 // impor/t
 
-const Layout = ({ title, id, desc, urlBg, urlBg2, bgColor}) => {
+const Layout = ({ title, id, desc, urlBg, urlBg2, bgColor, children}) => {
     const BG = () => {
         if (urlBg || urlBg2) {
             return {backgroundImage: 
@@ -22,6 +22,7 @@ const Layout = ({ title, id, desc, urlBg, urlBg2, bgColor}) => {
                     </div>
                     <div className={`full ${s.desc}`} >
                         <p>{desc}</p>
+                        {children}
                     </div>
                 </article>
             </div>
