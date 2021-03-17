@@ -1,4 +1,4 @@
-import react from 'react';
+import MenuHeader from '../../components/menuHeader/index';
 
 import cn from 'classnames';
 
@@ -12,6 +12,7 @@ const GamePage = ({ onChangePage }) => {
 
     return (
         <>
+            <MenuHeader />
             <h1 className={cn(s.header)}>
                 this is page!
             </h1>

@@ -17,7 +17,7 @@ const App = () => {
     case "game":
       return <GamePage onChangePage={handleChengePage}/>
     default:
-      return <HomePage />
+      return <HomePage onChangePage={handleChengePage}/>
   }
 }
 

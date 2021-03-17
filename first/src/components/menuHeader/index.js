@@ -3,19 +3,19 @@ import Menu from './menu/index';
 
 import { useState } from 'react';
 
-const MenuHeader = () => {
-    const [activeNav, setActiveNav] = useState('')
-    const [activeMenu, setactiveMenu] = useState('deactive')
+const MenuHeader = ({ bgActive }) => {
+    const [active, setactive] = useState(null)
 
     const handleNav = () => {
-        setActiveNav(!activeNav)
-        setactiveMenu(activeMenu === 'deactive' ? 'active' : 'deactive')
+      setactive(prevState => !prevState)
     }
 
   return (
     <>
-      <Menu handleNavbarClick={handleNav} isActive={activeMenu}/>
-      <Navbar  handleNavbarClick={handleNav} isActive={activeNav}/>
+      <Menu isActive={active} />
+      <Navbar handleNavbarClick={handleNav} isActive={active}
+        bgActive={bgActive}
+      />
     </>
   );
 }

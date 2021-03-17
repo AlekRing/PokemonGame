@@ -3,32 +3,43 @@ import cn from 'classnames';
 import s from './style.module.css';
 
 const Menu = ({ isActive }) => {
+  const ROUTES = [
+    {
+      route: '#welcome',
+      title: 'HOME'
+    },
+    {
+      route: '#game',
+      title: 'GAME'
+    },
+    {
+      route: '#about',
+      title: 'ABOUT'
+    },
+    {
+      route: '#contact',
+      title: 'CONTACT'
+    },
+  ]
+
   return (
-    <div class={cn(s.menuContainer, s[isActive])}>
+    <div class={cn(s.menuContainer, {
+          [s.active]: isActive === true,
+          [s.deactive]: isActive === false
+        })}>
         <div class={cn(s.overlay)} />
         <div class={cn(s.menuItems)}>
-          <ul>
-            <li>
-              <a href="#welcome">
-                HOME
-              </a>
-            </li>
-            <li>
-              <a href="#game">
-                GAME
-              </a>
-            </li>
-            <li>
-              <a href="#about">
-                ABOUT
-              </a>
-            </li>
-            <li>
-              <a href="#contact">
-                CONTACT
-              </a>
-            </li>
-          </ul>
+          {ROUTES.map(route => {
+            return (
+              <ul>
+                <li>
+                  <a href={route.route}>
+                    {route.title}
+                  </a>
+                </li>
+              </ul>
+            )
+          })}
         </div>
     </div>
   );
