@@ -36,8 +36,16 @@
 }
 
 .pokemonCard.active {
-    transform: rotateY(0deg);
-    box-shadow: 0 0 10px 10px rgba(255, 243, 76, 0.384)
+    animation: flipFront 200ms 300ms forwards;
+}
+
+@keyframes flipFront {
+    from {
+        transform: rotateY(180deg);
+    }
+    to {
+        transform: rotateY(0deg);
+    }
 }
 
 .cardFront,

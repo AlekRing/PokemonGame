@@ -12,7 +12,7 @@ const MenuHeader = ({ bgActive }) => {
 
   return (
     <>
-      <Menu isActive={active} />
+      <Menu isActive={active} handleNavbarClick={handleNav} />
       <Navbar handleNavbarClick={handleNav} isActive={active}
         bgActive={bgActive}
       />

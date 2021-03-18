@@ -1,7 +1,5 @@
 import s from "./layout.module.css";
 
-// impor/t
-
 const Layout = ({ title, id, desc, urlBg, urlBg2, bgColor, children}) => {
     const BG = () => {
         if (urlBg || urlBg2) {

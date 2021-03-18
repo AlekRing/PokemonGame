@@ -14,3 +14,12 @@
     cursor: pointer;
     background-color: #dd4a5400;
 }
+
+.wrap {
+    min-height: calc(100vh - 100px);
+    padding: 64px 0;
+}
+
+#isHomePage {
+    padding: 0;
+}

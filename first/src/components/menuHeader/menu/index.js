@@ -1,45 +1,48 @@
 import cn from 'classnames';
+import { Link } from 'react-router-dom';
 
 import s from './style.module.css';
 
-const Menu = ({ isActive }) => {
+const Menu = ({ isActive, handleNavbarClick }) => {
   const ROUTES = [
     {
-      route: '#welcome',
+      route: '/home',
       title: 'HOME'
     },
     {
-      route: '#game',
+      route: '/game',
       title: 'GAME'
     },
     {
-      route: '#about',
+      route: '/about',
       title: 'ABOUT'
     },
     {
-      route: '#contact',
+      route: '/contact',
       title: 'CONTACT'
     },
   ]
 
   return (
-    <div class={cn(s.menuContainer, {
+    <div className={cn(s.menuContainer, {
           [s.active]: isActive === true,
           [s.deactive]: isActive === false
         })}>
-        <div class={cn(s.overlay)} />
-        <div class={cn(s.menuItems)}>
-          {ROUTES.map(route => {
-            return (
-              <ul>
-                <li>
-                  <a href={route.route}>
+        <div className={cn(s.overlay)} />
+        <div className={cn(s.menuItems)}>
+          <ul>
+            {ROUTES.map((route, id) => {
+              return (
+                <li key={id}>
+                  <Link to={route.route} onClick={()=>{
+                    handleNavbarClick()
+                  }}>
                     {route.title}
-                  </a>
+                  </Link>
                 </li>
-              </ul>
-            )
-          })}
+              )
+            })}
+          </ul>
         </div>
     </div>
   );
