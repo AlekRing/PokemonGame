@@ -14,23 +14,23 @@ const GamePage = () => {
         history.push("/home")
     }
 
-    const [pokemonCards, setPokemonCards] = useState(()=>{
-        const tempPokeCards = POKEMONCARDS;
-        tempPokeCards.map(poke => {
-            return poke.active = !!poke.active
-        })
-        return tempPokeCards
-    })
+    const [pokemonCards, setPokemonCards] = useState(JSON.parse(JSON.stringify(POKEMONCARDS)))
+
+    console.log(pokemonCards === POKEMONCARDS)
 
     function revertCard(id) {
-        const newPokeCard = pokemonCards;
+        setPokemonCards(prevState => prevState.filter(poke => {
+            if (poke.id === id) {
+                if (poke.active === undefined || poke.active === false) {
+                    poke.active = true
+                } else {
+                    poke.active = !poke.active
+                }
+            }
+            console.log(pokemonCards, POKEMONCARDS)
 
-        newPokeCard.map(poke => {
-            if(poke.id === id) poke.active = !poke.active
-        })
-
-        setPokemonCards(newPokeCard);
-        console.log(pokemonCards, 'pokemonCards'.toUpperCase())
+            return true;
+        }))
     }
 
 

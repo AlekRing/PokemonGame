@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import cn from 'classnames';
  
 import CardBacked from "../../assets/card-back-side.jpg";
@@ -6,7 +5,6 @@ import CardBacked from "../../assets/card-back-side.jpg";
 import s from "./style.module.css";
 
 const PokemonCard = ({ type, id, name, values, img, revertCard, active }) => {
-    console.log(active)
     return ( 
       <>
         <div className={s.root} onClick={()=>{revertCard(id)}}>
