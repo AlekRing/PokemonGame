@@ -16,8 +16,6 @@ const GamePage = () => {
 
     const [pokemonCards, setPokemonCards] = useState(JSON.parse(JSON.stringify(POKEMONCARDS)))
 
-    console.log(pokemonCards === POKEMONCARDS)
-
     function revertCard(id) {
         setPokemonCards(prevState => prevState.filter(poke => {
             if (poke.id === id) {
