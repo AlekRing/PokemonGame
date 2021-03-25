@@ -83,7 +83,7 @@ const BoardPage = () => {
                 setFirstPlayer(prevstate => prevstate.filter(i => i.id !== chooseCard.id))
             }
             if (chooseCard.player === 2) {
-                setFirstPlayer(prevstate => prevstate.filter(i => i.id !== chooseCard.id))
+                setSeqPlayer(prevstate => prevstate.filter(i => i.id !== chooseCard.id))
             }
 
             setBoard(request.data)
