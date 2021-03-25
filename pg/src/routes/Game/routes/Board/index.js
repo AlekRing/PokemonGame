@@ -66,7 +66,7 @@ const BoardPage = () => {
             const params = {
                 position,
                 card: chooseCard,
-                board
+                board,
             }
 
             const res = await fetch('https://reactmarathon-api.netlify.app/api/players-turn', {
