@@ -56,6 +56,13 @@
     align-items: center;
 }
 
+.red {
+    background-color: #d998b2;
+}
+
+.blue {
+    background-color: #a8caea;
+}
 .cardFront {
     transform: rotateY(0deg);
     z-index: 2;
