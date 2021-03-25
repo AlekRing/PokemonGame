@@ -8,20 +8,19 @@ import PlayerBoard from './component/board';
 import s from './style.module.css';
 
 const counterWin = (board, firstPlayer, secPlayer) => {
-    // let firstPlayerCount = firstPlayer.length
-    // let secPlayerCount = secPlayer.length
+    let firstPlayerCount = firstPlayer.length
+    let secPlayerCount = secPlayer.length
 
     board.forEach(el => {
-        console.log(el)
-        // if (el.card.possession === 'red') {
-        //     firstPlayerCount++
-        // }
+        if (el.card.possession === 'red') {
+            firstPlayerCount++
+        }
 
-        // if (el.card.possession === 'blue') {
-        //     secPlayerCount++
-        // }
+        if (el.card.possession === 'blue') {
+            secPlayerCount++
+        }
 
-        // return [firstPlayerCount, secPlayerCount]
+        return [firstPlayerCount, secPlayerCount]
     });
 }
 
@@ -98,17 +97,15 @@ const BoardPage = () => {
 
     useEffect(() => {
         if (step === 9) {
-            // const [count1, count2] = counterWin(board, firsPlayer, secPlayer)
+            const [count1, count2] = counterWin(board, firsPlayer, secPlayer)
         
-            counterWin(board, null, null)
-            // if (count1 > count2) {
-            //     alert('WIN')
-            // } else if (count2 > count1) {
-            //     alert('LOSE')
-            // } else alert('nice')
+            if (count1 > count2) {
+                alert('WIN')
+            } else if (count2 > count1) {
+                alert('LOSE')
+            } else alert('nice')
 
-            // history.push('game/finish')
-            console.log('finished')
+            history.push('game/finish')
         }
     }, [step])
 

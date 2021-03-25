@@ -12,7 +12,7 @@ const PlayerBoard = ({ player, cards, onClickCard }) => {
                 cards.map((poke) => (
                     <div className={cn(s.cardBoard,
                         {
-                            [s.selecter]: (isSelected === poke.id)
+                            [s.selected]: (isSelected === poke.id)
                         }
                     )}
                     onClick={() => {
