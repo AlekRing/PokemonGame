@@ -1,63 +1,42 @@
 import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
-
-import PokemonCard from '../../components/pokemonCards/index'
-import { POKEMONCARDS } from '../../components/data/cards';
-
-import cn from 'classnames';
-import s from './style.module.css';
+import { useRouteMatch, Switch, Route} from 'react-router-dom';
+import { PokemonContext } from '../../context/pokemonContext';
+import BoardPage from './routes/Board';
+import FinishPage from './routes/Finish';
+import StartPage from './routes/Start';
 
 const GamePage = () => {
-    const history = useHistory();
+    const [selectedPokes, setSelectedPokes] = useState({})
+    const match = useRouteMatch();
 
-    const handleClick = () => {
-        history.push("/home")
-    }
+    const handlePokeSelection = (key, poke) => {
+        setSelectedPokes(prevState => {
+            if (prevState[key]) {
+                const temp = {...prevState}
+                delete temp[key]
 
-    const [pokemonCards, setPokemonCards] = useState(JSON.parse(JSON.stringify(POKEMONCARDS)))
-
-    console.log(pokemonCards === POKEMONCARDS)
-
-    function revertCard(id) {
-        setPokemonCards(prevState => prevState.filter(poke => {
-            if (poke.id === id) {
-                if (poke.active === undefined || poke.active === false) {
-                    poke.active = true
-                } else {
-                    poke.active = !poke.active
-                }
+                return temp;
             }
-            console.log(pokemonCards, POKEMONCARDS)
 
-            return true;
-        }))
+            return {
+                ...prevState,
+                [key]: poke
+            }
+        })
     }
-
 
     return (
-        <>
-            <div className={s.flex}>
-                <button className={cn("link_button")} onClick={handleClick}>
-                    Get Back
-                </button>
-                {pokemonCards.map(poke => {
-                  return (
-                    <PokemonCard
-                      key={poke.id}
-                      type={poke.type}
-                      id={poke.id}
-                      name={poke.name}
-                      count={poke.count}
-                      values={poke.values}
-                      img={poke.img}
-                      active={poke.active}
-                      revertCard={revertCard}
-                    />
-                  )
-                })}
-            </div>
-        </>   
-    )
-}
+        <PokemonContext.Provider value={{
+            pokes: selectedPokes,
+            selectPoke: handlePokeSelection
+        }}>
+            <Switch>
+                <Route path={`${match.path}/`} exact component={StartPage} />
+                <Route path={`${match.path}/board`} component={BoardPage} />
+                <Route path={`${match.path}/finish`} component={FinishPage} />
+            </Switch>
+        </PokemonContext.Provider>
+    );
+};
 
 export default GamePage;
