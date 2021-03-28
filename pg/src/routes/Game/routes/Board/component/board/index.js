@@ -30,6 +30,7 @@ const PlayerBoard = ({ player, cards, onClickCard }) => {
                         name={poke.name}
                         values={poke.values}
                         img={poke.img}
+                        possession={poke.possession}
                         minimize
                         active
                     />
