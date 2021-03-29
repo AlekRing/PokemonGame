@@ -20,7 +20,7 @@ const PokemonCard = ({ type, id, name, values, img, isSelected,
                 onClick={handleClick}>
                 <div className={s.cardFront}>
                     <div className={cn(s.wrap, s.front)}>
-                        <div className={cn(s.pokemon, s[type], s[possession])} style={{backgroundColor: possession}}>
+                        <div className={cn(s.pokemon, s[type], s[possession])}>
                             <div className={s.values}>
                                 <div className={cn(s.count, s.top)}>{values.top}</div>
                                 <div className={cn(s.count, s.right)}>{values.right}</div>

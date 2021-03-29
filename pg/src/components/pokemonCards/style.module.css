@@ -18,12 +18,17 @@
     height: 100%;
     position: relative;
     transform-style: preserve-3d;
-    transition: .6s .1s;
+    transition: .25s .1s;
     transform: rotateY(180deg);
 }
 
 .pokemonCard.active {
-    animation: flipFront 1000ms 300ms forwards;
+    animation: flipFront 200ms 50ms forwards;
+    
+}
+
+.pokemonCard.selected .wrap.front::after {
+    border: 12px solid #5691ff;
 }
 
 @keyframes flipFront {
@@ -56,13 +61,6 @@
     align-items: center;
 }
 
-.red {
-    background-color: #d998b2;
-}
-
-.blue {
-    background-color: #a8caea;
-}
 .cardFront {
     transform: rotateY(0deg);
     z-index: 2;
@@ -236,4 +234,12 @@
     left: 50%;
     transform: translate(-50%, 0);
     bottom: 0;
+}
+
+.red {
+    background-color: #d998b2;
+}
+
+.blue {
+    background-color: #a8caea;
 }
