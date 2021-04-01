@@ -9,33 +9,37 @@ import s from './style.module.css'
 const FinishPage = () => {
     const history = useHistory()
     let { isFinished } = useContext(PokemonContext)
+    const { wictory } = useContext(PokemonContext)
     const {pokes} = useContext(PokemonContext)
     const { pokesPlayer2 } = useContext(PokemonContext)
     const firebase = useContext(FirebaseContext)
-    const [gameIsFinished, setgameIsFinished] = useState(false)
     const [idChosen, setidChosen] = useState(null)
 
     const [choosedPoke, setChoosedPoke] = useState({})
+    const [isWictory, setIsWictory] = useState(wictory)
 
-    if (isFinished === false) {
-        history.replace('/game')
-    }
-
-    const addChosedPokeToPlayer1 = (poke, id) => {
+    const addChosedPoke = (poke, id) => {
+        if (!wictory) return
         setChoosedPoke(poke)
         setidChosen(id)
-        setgameIsFinished(true)
     }
 
-    const finishgame = async (poke) => {
-        console.log('finished')
-        await firebase.addPokemon(choosedPoke, goToNewGame)
 
-        // PokemonContext
+    const addPokeToTheBase = async () => {
+        await firebase.addPokemon(choosedPoke, resetStyles)
+    }
+
+    const resetStyles = () => {
+        setidChosen(null)
+        setIsWictory(prev => !prev)
     }
 
     const goToNewGame = () => {
         history.replace('/game')
+    }
+
+    if (isFinished === false) {
+        goToNewGame()
     }
 
     return (
@@ -60,19 +64,30 @@ const FinishPage = () => {
                 }
             </div>
             <div className={s.btn_wrapper}>
-                <button className={`link_button ${gameIsFinished ? 'active' : 'disabled'}`} 
-                    onClick={() => {finishgame()}}
-                    disabled={gameIsFinished ? false : true}
+                <button className={`link_button`} 
+                    onClick={() => {goToNewGame()}}
                 >
                     Finish Game
+                </button>
+            </div>
+            <div className={s.title}>
+                {wictory? `You can choose only 1 card to add to your collection`
+                    : 'You lost! Try again)'}
+            </div>
+            <div className={s.btn_wrapper}>
+                <button className={`link_button ${isWictory ? 'active' : 'disabled'}`} 
+                    onClick={() => {addPokeToTheBase()}}
+                    disabled={isWictory ? false : true}
+                >
+                    Add pokemon
                 </button>
             </div>
             <div className={`${s.flex}`}>
                 {
                     Object.values(pokesPlayer2).map((poke, id) => (
                         <div 
-                            className={`${s.card} ${idChosen === id ? `${s.active}` : ''}`}
-                            onClick={()=> {addChosedPokeToPlayer1(poke, id)}}
+                            className={`${s.card} ${idChosen === id ? `${s.active}` : ''} ${s.choose_poke}`}
+                            onClick={()=> {addChosedPoke(poke, id)}}
                         >
                         <PokemonCard
                             key={poke.id}

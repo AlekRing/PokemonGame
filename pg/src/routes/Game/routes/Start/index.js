@@ -13,6 +13,7 @@ const StartPage = () => {
     const firebase = useContext(FirebaseContext)
     const pokemonContext = useContext(PokemonContext)
     const history = useHistory();
+    const [loading, setLoading] = useState(false)
 
     const handleClick = () => {
         history.push("/home")
@@ -21,12 +22,28 @@ const StartPage = () => {
     const [pokemonCards, setPokemonCards] = useState({})
 
     useEffect(()=> {
+
+        if (pokemonContext.isFinished) {
+            pokemonContext.selectPoke('reset', 'reset')
+            pokemonContext.finishGame()
+            pokemonContext.changeWictory('reset')
+        }
+
         firebase.getPokemonSoket((pokemons) => {
             setPokemonCards(pokemons)
         })
 
         return () => firebase.offPokemonSoket()
     }, [])
+
+    console.log(pokemonContext.wictory)
+
+    useEffect(() => {
+        if (Object.values(pokemonCards).length === 0) {
+            setLoading(true)
+        } else setLoading(false)
+
+    }, [pokemonCards])
 
     const revertCard = (key) => {
         const poke = {...pokemonCards[key]}
@@ -56,7 +73,8 @@ const StartPage = () => {
             <button className={cn("link_button")} onClick={handleClick}>
                 Get Back
             </button>
-            <div className={s.flex}>
+            <div className={cn(s.flex)}>
+                <div className={cn(s.loader, [loading? s.loading : s.stop_loading])}></div>
                 { Object.entries(pokemonCards).map(([key, poke]) => {
                   return (
                     <PokemonCard

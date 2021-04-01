@@ -5,6 +5,7 @@
     padding: 1rem;
     display: flex;
     justify-content: center;
+    user-select: none;
   }
   
   .root.bgActive {
@@ -20,10 +21,20 @@
     padding: 0 2rem;
   }
   
-  .root .brand {
-    font-size: 1.6rem;
-    color: #fafafa;
-    cursor: default;
+
+  .brand {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.8);
+    background-size: contain;
+    background-image: url('../../../assets/Poke_Ball.png');
+    transition: 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+  }
+
+  .brand:hover {
+    transform: rotate(360deg);
+    cursor: pointer;
   }
   
   /***** Menu Button *****/
