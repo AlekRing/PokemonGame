@@ -7,6 +7,9 @@ import StartPage from './routes/Start';
 
 const GamePage = () => {
     const [selectedPokes, setSelectedPokes] = useState({})
+    const [player2Pokes, setPlayer2Pokes] = useState([])
+    const [isFinished, setIsFinished] = useState(false)
+
     const match = useRouteMatch();
 
     const handlePokeSelection = (key, poke) => {
@@ -25,10 +28,22 @@ const GamePage = () => {
         })
     }
 
+    const addSecPlayerPokes = (pokes) => {
+        setPlayer2Pokes(pokes)
+    }
+
+    const finishGame = () => {
+        setIsFinished(prevState => !prevState)
+    }
+
     return (
         <PokemonContext.Provider value={{
             pokes: selectedPokes,
-            selectPoke: handlePokeSelection
+            pokesPlayer2: player2Pokes,
+            selectPoke: handlePokeSelection,
+            addplayer2Pokes: addSecPlayerPokes,
+            isFinished: isFinished,
+            finishGame: finishGame,
         }}>
             <Switch>
                 <Route path={`${match.path}/`} exact component={StartPage} />

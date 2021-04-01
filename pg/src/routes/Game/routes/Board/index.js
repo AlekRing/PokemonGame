@@ -8,25 +8,28 @@ import PlayerBoard from './component/board';
 import s from './style.module.css';
 
 const counterWin = (board, firstPlayer, secPlayer) => {
-    let firstPlayerCount = firstPlayer.length
-    let secPlayerCount = secPlayer.length
+    let count1 = firstPlayer.length
+    let count2 = secPlayer.length
 
     board.forEach(el => {
         if (el.card.possession === 'red') {
-            firstPlayerCount++
+            count2++
         }
 
         if (el.card.possession === 'blue') {
-            secPlayerCount++
+            count1++
         }
 
-        return [firstPlayerCount, secPlayerCount]
     });
+    return [count1, count2]
+
 }
 
 
 const BoardPage = () => {
     const {pokes} = useContext(PokemonContext)
+    let {finishGame} = useContext(PokemonContext)
+    const pokemonContext = useContext(PokemonContext)
 
     const [board, setBoard] = useState([])
     const [firsPlayer, setFirstPlayer] = useState(() => {
@@ -53,10 +56,12 @@ const BoardPage = () => {
         const secPlayerResponse = await fetch('https://reactmarathon-api.netlify.app/api/create-player')
         const secPlayerReq = await secPlayerResponse.json()
 
+        pokemonContext.addplayer2Pokes(secPlayerReq.data) 
+
         setSeqPlayer(() => {
             return secPlayerReq.data.map(c => ({
                 ...c,
-                possession: 'red'
+                possession: 'red',
             }))
         })
     }, [])
@@ -105,7 +110,8 @@ const BoardPage = () => {
                 alert('LOSE')
             } else alert('nice')
 
-            history.push('game/finish')
+            finishGame()
+            history.push('/game/finish')
         }
     }, [step])
 
