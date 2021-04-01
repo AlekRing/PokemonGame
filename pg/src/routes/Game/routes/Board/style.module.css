@@ -2,8 +2,9 @@
     background-image: url(../../../../assets/board.png);
     background-size: cover;
     background-repeat: no-repeat;
-    height: calc(100vw / 1.71);
+    height: calc(100vw / 1.7);
     position: relative;
+    user-select: none;
 }
 
 .board {
@@ -39,6 +40,7 @@
     margin-top: 0;
 }
 .playerOne {
+    margin: 3% 0;
     position: absolute;
     top: 4.3vw;
     left: 5vw;
@@ -47,6 +49,7 @@
 }
 
 .playerTwo {
+    margin: 3% 0;
     position: absolute;
     top: 4.3vw;
     right: 5vw;

@@ -105,6 +105,7 @@ const BoardPage = () => {
             const [count1, count2] = counterWin(board, firsPlayer, secPlayer)
         
             if (count1 > count2) {
+                pokemonContext.changeWictory()
                 alert('WIN')
             } else if (count2 > count1) {
                 alert('LOSE')
