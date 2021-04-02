@@ -36,8 +36,6 @@ const StartPage = () => {
         return () => firebase.offPokemonSoket()
     }, [])
 
-    console.log(pokemonContext.wictory)
-
     useEffect(() => {
         if (Object.values(pokemonCards).length === 0) {
             setLoading(true)
