@@ -47,23 +47,28 @@ const BoardPage = () => {
         history.replace('/game')
     }
 
-    useEffect(async () => {
-        const boardResponse = await fetch('https://reactmarathon-api.netlify.app/api/board')
-        const boardreq = await boardResponse.json()
+    useEffect(() => {
+        const asyncFunk = async () => {
+            const boardResponse = await fetch('https://reactmarathon-api.netlify.app/api/board')
+            const boardreq = await boardResponse.json()
+    
+            setBoard(boardreq.data)
+    
+            const secPlayerResponse = await fetch('https://reactmarathon-api.netlify.app/api/create-player')
+            const secPlayerReq = await secPlayerResponse.json()
+    
+            pokemonContext.addplayer2Pokes(secPlayerReq.data) 
+    
+            setSeqPlayer(() => {
+                return secPlayerReq.data.map(c => ({
+                    ...c,
+                    possession: 'red',
+                }))
+            })
+        }
 
-        setBoard(boardreq.data)
-
-        const secPlayerResponse = await fetch('https://reactmarathon-api.netlify.app/api/create-player')
-        const secPlayerReq = await secPlayerResponse.json()
-
-        pokemonContext.addplayer2Pokes(secPlayerReq.data) 
-
-        setSeqPlayer(() => {
-            return secPlayerReq.data.map(c => ({
-                ...c,
-                possession: 'red',
-            }))
-        })
+        asyncFunk()
+        
     }, [])
 
     const setCardonBoard = async (position) => {
