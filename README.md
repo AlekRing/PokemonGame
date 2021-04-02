@@ -1,1 +1,1 @@
-Hello world!
+Hello this is a pokemon game there you can build your own collection and fight against another summoner!
