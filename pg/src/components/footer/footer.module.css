@@ -7,7 +7,7 @@ footer {
     left: 0;
     width: 100%;
     height: 100px;
-    background: #fafafa;
+    background: #111622;
     z-index: 0;
 }
 
@@ -16,8 +16,13 @@ footer .wrapper {
     width: 100%;
     padding: 2rem;
     max-width: 1400px;
+    color: blanchedalmond;
     align-items: center;
     justify-content: space-between;
+}
+
+.link {
+    color: blanchedalmond;
 }
 
 @media only screen and (max-width: 649px) {

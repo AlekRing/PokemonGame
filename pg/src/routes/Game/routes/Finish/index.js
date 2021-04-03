@@ -27,6 +27,7 @@ const FinishPage = () => {
 
     const addPokeToTheBase = async () => {
         await firebase.addPokemon(choosedPoke, resetStyles)
+        setidChosen(10000)
     }
 
     const resetStyles = () => {
@@ -71,7 +72,7 @@ const FinishPage = () => {
                 </button>
             </div>
             <div className={s.title}>
-                {wictory? `You can choose only 1 card to add to your collection`
+                {wictory? `You can choose ${idChosen === 10000 ? '0' : 'only 1'} card to add to your collection`
                     : 'You lost! Try again)'}
             </div>
             <div className={s.btn_wrapper}>

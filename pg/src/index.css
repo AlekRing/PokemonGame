@@ -15,7 +15,7 @@ html, body {
 
 body {
     color: #252934;
-    background: #fafafa;
+    background: #3e4a64;
     font-size: 62.5%;
     font-family: 'Overlock', Arial, Helvetica, sans-serif;
     overflow-x: hidden;
@@ -31,5 +31,5 @@ a:visited {
 
 a:hover,
 a:active {
-    color: #f300b4;
+    color: rgb(255, 61, 100);
 }

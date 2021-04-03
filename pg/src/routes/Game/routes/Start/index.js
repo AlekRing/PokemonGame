@@ -60,17 +60,28 @@ const StartPage = () => {
         history.push("/game/board")
     }
 
+    const getNumbOfPokesToChoose = () => {
+        const len = Object.keys(pokemonContext.pokes).length
+        const numbP = [5,4,3,2,1,0]
+        return numbP[len]
+    }
+
     return (
         <div className={cn(s.game_page)}>
-            <button className={cn("link_button")} 
-                    onClick={() => {startGame()}}
-                    disabled={Object.keys(pokemonContext.pokes).length < 5}
-            >
-                Start Game
-            </button>
-            <button className={cn("link_button")} onClick={handleClick}>
-                Get Back
-            </button>
+            <div className={s.buttons_block}>
+                <button className={cn("link_button", [Object.keys(pokemonContext.pokes).length < 5 ? 'disabled' : ''])} 
+                        onClick={() => {startGame()}}
+                        disabled={Object.keys(pokemonContext.pokes).length < 5}
+                >
+                    Start Game
+                </button>
+                <div className={s.instruction}>
+                    {`You have to choose ${getNumbOfPokesToChoose()} pokemon`}
+                </div>
+                <button className={cn("link_button")} onClick={handleClick}>
+                    Get Back
+                </button>
+            </div>
             <div className={cn(s.flex)}>
                 <div className={cn(s.loader, [loading? s.loading : s.stop_loading])}></div>
                 { Object.entries(pokemonCards).map(([key, poke]) => {
