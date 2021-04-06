@@ -1,17 +1,17 @@
 .pokemonCard {
-    --fire: #FDDFDF;
-    --grass: #DEFDE0;
-    --electric: #FCF7DE;
-    --water: #DEF3FD;
+    --fire: rgb(255, 195, 195);
+    --grass: rgb(190, 238, 157);
+    --electric: #fff5c3;
+    --water: rgb(182, 234, 255);
     --ground: #f4e7da;
     --rock: #d5d5d4;
     --fairy: #fceaff;
-    --poison: #98d7a5;
+    --poison: rgb(152, 215, 165);
     --bug: #f8d5a3;
     --dragon: #97b3e6;
     --psychic: #eaeda1;
     --flying: #F5F5F5;
-    --fighting: #E6E0D4;
+    --fighting: #cfc9bd;
     --normal:#F5F5F5;
 
     width: 100%;
@@ -28,7 +28,7 @@
 }
 
 .pokemonCard.selected .wrap.front::after {
-    border: 12px solid #5691ff;
+    border: 10px solid #fce756;
 }
 
 @keyframes flipFront {
@@ -85,7 +85,7 @@
     width: 100%;
     height: 100%;
     position: absolute;
-    border: 12px solid #fce756;
+    border: 10px solid #fff194;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
@@ -166,6 +166,10 @@
     background-color: var(--normal);
 }
 
+.pokemon {
+    border-radius: 6px;
+}
+
 .pokemon .imgContainer {
     background-color: rgba(255, 255, 255, 0.6);
     border-radius: 50%;
@@ -184,15 +188,20 @@
     margin-top: 20px;
 }
 
+.info small {
+    font-size: .7rem;
+}
+
 .pokemon .number {
     background-color: rgba(0, 0, 0, 0.1);
     border-radius: 10px;
-    font-size: 0.8em;
+    font-size: 1em;
     padding: 5px 10px;
 }
 
 .pokemon .name {
     margin: 15px 0 7px;
+    font-size: 0.8rem;
     letter-spacing: 1px;
 }
 
@@ -237,9 +246,9 @@
 }
 
 .red {
-    background-color: #d998b2;
+    background-color: #d87ba0;
 }
 
 .blue {
-    background-color: #a8caea;
+    background-color: #8abae7;
 }

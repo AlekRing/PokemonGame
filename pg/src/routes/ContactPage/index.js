@@ -12,14 +12,14 @@ const ContactPage = () => {
     }
 
     return (
-        <>
+        <div className={s.wrapper}>
             <h1 className={cn(s.header)}>
-                this is CONTACT page!
+                My gitHub: <a href='https://github.com/AlekRing' target='_blank'>Alek_Ring</a>
             </h1>
             <button className={cn("link_button")} onClick={handleClick}>
                 Get Back
             </button>
-        </>   
+        </div>   
     )
 }
 

@@ -1,7 +1,7 @@
 .root {
     font-size: 1.4rem;
     position: relative;
-    background: #fafafa;
+    background: #3e4a64;
     clip-path: polygon(0 0, 20% 5%, 100% 0, 100% 100%, 80% 95%, 0 100%);
     z-index: 5;
     background-size: contain;
@@ -34,7 +34,7 @@
 }
 
 .root .separator {
-    background: #f300b4;
+    background: crimson;
     width: 150px;
     height: 2px;
     margin: 1rem 0;

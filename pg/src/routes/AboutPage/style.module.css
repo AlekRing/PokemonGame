@@ -1,0 +1,79 @@
+.wrapper {
+    margin: 6% 0 0 4%;
+    color: blanchedalmond;
+}
+
+.poke_ball {
+    position: relative;
+    margin: 4% auto;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background-size: cover;
+    background-color: #fff;
+    background-image: url('../../assets/Poke_Ball.png');
+}
+
+.poke_ball::after {
+    content: '';
+    position: absolute;
+    bottom: -32px;
+    left: calc(50% - 35px);
+    background-color: rgba(0, 0, 0, 0.4);
+    border-radius: 50%;
+    width: 70px;
+    height: 20px;
+}
+
+.poke_ball:hover {
+    animation: jump .8s linear infinite;
+}
+
+.poke_ball::after:hover {
+    animation: none;
+}
+
+@keyframes jump {
+    0% {
+        transform: scaleY(0.98);
+        top: 0;
+    }
+    15% {
+        transform: scaleY(1.04);
+        top: 8px;
+    }
+    30% {
+        transform: scaleY(1.02);
+        top: 16px;
+    }
+    45% {
+        transform: scaleY(0.95);
+        top: 24px;
+    }
+    50% {
+        transform: scaleY(0.85);
+        top: 32px;
+    }
+    65% {
+        transform: scaleY(0.98);
+        top: 24px;
+    }
+    80% {
+        transform: scaleY(1.03);
+        top: 16px;
+    }
+    95% {
+        transform: scaleY(1.05);
+        top: 8px;
+    }
+    100% {
+        transform: scaleY(0.98);
+        top: 0;
+    }
+}
+
+.header {
+    margin: 0 2% 0 0;
+    text-align: justify;
+    background-color: #111622;
+}

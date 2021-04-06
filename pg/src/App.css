@@ -4,8 +4,8 @@
     font-size: 18px;
     color: white;
     box-sizing: border-box;
-    border: solid 2px #f300b4;
-    background-color: #f300b4;
+    border: solid 2px #e31e24;
+    background-color: #e31e24;
     outline: none;
     transition: 300ms cubic-bezier(0.77, 0, 0.175, 1);
 }
