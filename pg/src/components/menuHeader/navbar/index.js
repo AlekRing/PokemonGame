@@ -3,7 +3,9 @@ import { useHistory } from 'react-router';
 
 import s from './style.module.css';
 
-const Navbar = ({ handleNavbarClick, isActive, bgActive = false }) => {
+import {ReactComponent as LoginSVG} from '../../../assets/login.svg'
+
+const Navbar = ({ handleNavbarClick, isActive, bgActive = false, onClickLogin }) => {
   const history = useHistory()
 
   const handleNav = () => {
@@ -20,12 +22,20 @@ const Navbar = ({ handleNavbarClick, isActive, bgActive = false }) => {
             onClick={()=> {handleNav()}}
             className={cn(s.brand)} 
           />
-          <div onClick={()=>{
+          <div className={s.loginAndNavbar}>
+            <div className={s.login_wrapper}
+              onClick={()=>{onClickLogin()}}  
+            >
+              <LoginSVG />
+            </div>
+            <div onClick={()=>{
               handleNavbarClick && handleNavbarClick()
             }}
-            className={cn(s.menuButton, {[s.active]: isActive})}>
-            <span />
+              className={cn(s.menuButton, {[s.active]: isActive})}>
+              <span />
+            </div>
           </div>
+        
         </div>
     </nav>
   );

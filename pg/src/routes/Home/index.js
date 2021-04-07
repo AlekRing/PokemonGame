@@ -14,7 +14,7 @@ const HomePage = ({ onChangePage }) => {
 
   return (
     <>
-      <Header title="Hello there!" descr="so good"
+      <Header title="Fight and catch" descr="...your own pokemon"
         onClickButton={handleClickButton}/>
       <Layout urlBg={urlBg} title="Description" id="myId" desc="">
         <div>
@@ -24,7 +24,7 @@ const HomePage = ({ onChangePage }) => {
         </div>
       </Layout>
       <Layout title="Rules" id="myId" desc="1. In start of game you will need to choose 5 pokemon to fight.
-      2.Fight against another " />
+      2.Fight against another summoner" />
       <Layout urlBg2={urlBg2} title="Come to the Dark Side" id="myId" desc="we have cookies" />
     </>
   );
