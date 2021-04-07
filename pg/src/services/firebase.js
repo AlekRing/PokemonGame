@@ -44,4 +44,6 @@ class Firebase {
   }
 }
 
-export default Firebase;
+const firebaseClass = new Firebase()
+
+export default firebaseClass;
