@@ -5,21 +5,23 @@ import PokemonCard from '../../../../components/pokemonCards/index'
 
 import cn from 'classnames';
 import s from '../../style.module.css';
-import { FirebaseContext } from '../../../../context/firebaseContext';
 import { PokemonContext } from '../../../../context/pokemonContext';
+import { useDispatch, useSelector } from 'react-redux';
+import { getPokemonsAsync, selectPokemonsData, selectPokemonsLoading } from '../../../../store/pokemon';
 
 
 const StartPage = () => {
-    const firebase = useContext(FirebaseContext)
     const pokemonContext = useContext(PokemonContext)
+    const isLoading = useSelector(selectPokemonsLoading)
+    const pokemonsRedux = useSelector(selectPokemonsData)
     const history = useHistory();
-    const [loading, setLoading] = useState(false)
+    const dispatch = useDispatch();
+
+    const [pokemonCards, setPokemonCards] = useState({})
 
     const handleClick = () => {
         history.push("/home")
     }
-
-    const [pokemonCards, setPokemonCards] = useState({})
 
     useEffect(()=> {
 
@@ -29,19 +31,12 @@ const StartPage = () => {
             pokemonContext.changeWictory('reset')
         }
 
-        firebase.getPokemonSoket((pokemons) => {
-            setPokemonCards(pokemons)
-        })
-
-        return () => firebase.offPokemonSoket()
+        dispatch(getPokemonsAsync())
     }, [])
 
     useEffect(() => {
-        if (Object.values(pokemonCards).length === 0) {
-            setLoading(true)
-        } else setLoading(false)
-
-    }, [pokemonCards])
+        setPokemonCards(pokemonsRedux)
+    }, [pokemonsRedux])
 
     const revertCard = (key) => {
         const poke = {...pokemonCards[key]}
@@ -83,7 +78,7 @@ const StartPage = () => {
                 </button>
             </div>
             <div className={cn(s.flex)}>
-                <div className={cn(s.loader, [loading? s.loading : s.stop_loading])}></div>
+                <div className={cn(s.loader, [isLoading? s.loading : s.stop_loading])}></div>
                 { Object.entries(pokemonCards).map(([key, poke]) => {
                   return (
                     <PokemonCard
