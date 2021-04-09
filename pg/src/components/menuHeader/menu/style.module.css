@@ -159,7 +159,7 @@
 
 .menuContainer ul li a:hover::after {
   content: ' »';
-  color: #f300b4;
+  color: crimson;
 }
 
 .menuContainer a,
@@ -169,7 +169,7 @@
 
 .menuContainer a:hover,
 .menuContainer a:active {
-  color: #f300b4;
+  color: crimson;
 }
 
 @media only screen and (max-width: 649px) {

@@ -75,7 +75,7 @@
   .menuButton:hover > span,
   .menuButton:hover > span::before,
   .menuButton:hover > span::after {
-    background: #f300b4;
+    background: crimson;
   }
   
   .menuButton.active > span  {
@@ -96,4 +96,30 @@
     #navbar {
       background: #181d23aa;
     }
+  }
+
+  .loginAndNavbar {
+    display: flex;
+  }
+
+  .login_wrapper {
+    width: 22px;
+    height: 22px;
+    margin-right: 22px;
+  }
+
+  .login_wrapper svg {
+    width: 100%;
+    height: 100%;
+    color: white;
+  }
+
+  .login_wrapper svg  g {
+    fill: white;
+    transition: .5s fill ease-in-out;
+  }
+
+  .login_wrapper:hover svg  g {
+    cursor: pointer;
+    fill: crimson;
   }
